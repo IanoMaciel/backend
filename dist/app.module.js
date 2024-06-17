@@ -25,7 +25,7 @@ exports.AppModule = AppModule = __decorate([
                 port: 3306,
                 username: 'root',
                 password: '1234',
-                database: 'blood_db',
+                database: 'donor_db',
                 entities: [(0, path_1.join)(__dirname, '**/*entity.{ts,js}')],
                 synchronize: true,
             }),

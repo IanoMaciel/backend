@@ -13,7 +13,7 @@ import { DonorsModule } from './donors/donors.module';
       port: 3306,
       username: 'root',
       password: '1234',
-      database: 'blood_db',
+      database: 'donor_db',
       entities: [join(__dirname, '**/*entity.{ts,js}')],
       synchronize: true,
     }),
