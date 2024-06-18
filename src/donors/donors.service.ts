@@ -1,26 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { CreateDonorDto } from './dto/create-donor.dto';
 import { UpdateDonorDto } from './dto/update-donor.dto';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Donor } from './entities/donor.entity';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class DonorsService {
-  create(createDonorDto: CreateDonorDto) {
-    return 'This action adds a new donor';
+  constructor(@InjectRepository(Donor) private repository: Repository<Donor>) {}
+
+  async create(createDonorDto: CreateDonorDto) {
+    // create a new donors
+    return await this.repository.save(createDonorDto);
+
+    // email is unique
   }
 
-  findAll() {
-    return `This action returns all donors`;
+  async findAll() {
+    // list all donors
+    return await this.repository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} donor`;
+  async findOne(id: number) {
+    // find one donor
+    return await this.repository.findOneBy({ id: id });
   }
 
-  update(id: number, updateDonorDto: UpdateDonorDto) {
-    return `This action updates a #${id} donor`;
+  async update(id: number, updateDonorDto: UpdateDonorDto) {
+    return await this.repository.update(id, updateDonorDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} donor`;
+  async remove(id: number) {
+    return await this.repository.delete({ id: id });
   }
 }

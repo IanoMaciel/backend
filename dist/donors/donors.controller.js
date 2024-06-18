@@ -21,20 +21,20 @@ let DonorsController = class DonorsController {
     constructor(donorsService) {
         this.donorsService = donorsService;
     }
-    create(createDonorDto) {
-        return this.donorsService.create(createDonorDto);
+    async create(createDonorDto) {
+        return await this.donorsService.create(createDonorDto);
     }
-    findAll() {
-        return this.donorsService.findAll();
+    async findAll() {
+        return await this.donorsService.findAll();
     }
-    findOne(id) {
-        return this.donorsService.findOne(+id);
+    async findOne(id) {
+        return await this.donorsService.findOne(+id);
     }
-    update(id, updateDonorDto) {
-        return this.donorsService.update(+id, updateDonorDto);
+    async update(id, updateDonorDto) {
+        return await this.donorsService.update(+id, updateDonorDto);
     }
-    remove(id) {
-        return this.donorsService.remove(+id);
+    async remove(id) {
+        return await this.donorsService.remove(+id);
     }
 };
 exports.DonorsController = DonorsController;
@@ -43,20 +43,20 @@ __decorate([
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_donor_dto_1.CreateDonorDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DonorsController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DonorsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DonorsController.prototype, "findOne", null);
 __decorate([
     (0, common_1.Patch)(':id'),
@@ -64,14 +64,14 @@ __decorate([
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String, update_donor_dto_1.UpdateDonorDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DonorsController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], DonorsController.prototype, "remove", null);
 exports.DonorsController = DonorsController = __decorate([
     (0, common_1.Controller)('donors'),
