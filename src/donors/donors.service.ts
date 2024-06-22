@@ -26,6 +26,10 @@ export class DonorsService {
     return await this.repository.findOneBy({ id: id });
   }
 
+  async findOneByEmail(email: string): Promise<Donor | undefined> {
+    return await this.repository.findOne({ where: { email } });
+  }
+  
   async update(id: number, updateDonorDto: UpdateDonorDto) {
     return await this.repository.update(id, updateDonorDto);
   }

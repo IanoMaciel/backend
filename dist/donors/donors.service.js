@@ -30,6 +30,9 @@ let DonorsService = class DonorsService {
     async findOne(id) {
         return await this.repository.findOneBy({ id: id });
     }
+    async findOneByEmail(email) {
+        return await this.repository.findOne({ where: { email } });
+    }
     async update(id, updateDonorDto) {
         return await this.repository.update(id, updateDonorDto);
     }

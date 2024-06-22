@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { DonorsModule } from './donors/donors.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { DonorsModule } from './donors/donors.module';
       autoLoadEntities: true,
     }),
     DonorsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
@@ -22,12 +24,12 @@ export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply((req, res, next) => {
-        res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // Permitir apenas solicitações deste domínio
+        res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
         res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,PATCH,OPTIONS');
         res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-        res.header('Access-Control-Allow-Credentials', 'true'); // Permitir credenciais (cookies, tokens, etc)
+        res.header('Access-Control-Allow-Credentials', 'true');
         next();
       })
-      .forRoutes('*'); // Aplicar CORS em todas as rotas
+      .forRoutes('*');
   }
 }

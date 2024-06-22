@@ -8,6 +8,7 @@ export declare class DonorsService {
     create(createDonorDto: CreateDonorDto): Promise<CreateDonorDto & Donor>;
     findAll(): Promise<Donor[]>;
     findOne(id: number): Promise<Donor>;
+    findOneByEmail(email: string): Promise<Donor | undefined>;
     update(id: number, updateDonorDto: UpdateDonorDto): Promise<import("typeorm").UpdateResult>;
     remove(id: number): Promise<import("typeorm").DeleteResult>;
 }

@@ -20,6 +20,7 @@ exports.DonorsModule = DonorsModule = __decorate([
         imports: [typeorm_1.TypeOrmModule.forFeature([donor_entity_1.Donor])],
         controllers: [donors_controller_1.DonorsController],
         providers: [donors_service_1.DonorsService],
+        exports: [donors_service_1.DonorsService],
     })
 ], DonorsModule);
 //# sourceMappingURL=donors.module.js.map

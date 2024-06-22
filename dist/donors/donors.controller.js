@@ -17,6 +17,7 @@ const common_1 = require("@nestjs/common");
 const donors_service_1 = require("./donors.service");
 const create_donor_dto_1 = require("./dto/create-donor.dto");
 const update_donor_dto_1 = require("./dto/update-donor.dto");
+const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 let DonorsController = class DonorsController {
     constructor(donorsService) {
         this.donorsService = donorsService;
@@ -59,6 +60,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], DonorsController.prototype, "findOne", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -67,6 +69,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], DonorsController.prototype, "update", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
